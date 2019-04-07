@@ -1,0 +1,18 @@
+version: '3.6'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    hostname: ev-container
+    domainname: ev-container.com
+    image: ev-docker
+    ports:
+      - 8088:80
+    volumes:
+      - .:/srv/www
+    networks:
+      - api
+networks:
+  api:
+    driver: "bridge"
